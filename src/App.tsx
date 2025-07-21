@@ -33,6 +33,16 @@ export function App() {
     return s.replace(/[a-zA-Z].*/g, "") || "0";
   }
 
+  function onTimeInMonthsChange(evt: React.ChangeEvent<HTMLInputElement>) {
+    let months = Number(removeAlphaNumericCharacters(evt.target.value));
+    if (months < 0) {
+      months = 0;
+    }
+
+    evt.target.value = `${months}`;
+    setTimeInMonths(months);
+  }
+
   return (
     <div className="flex justify-center items-center p-3">
       <div>
@@ -62,10 +72,7 @@ export function App() {
           <input
             type="text"
             className="border-black border mb-2"
-            onBlur={(e) => {
-              e.target.value = removeAlphaNumericCharacters(e.target.value);
-              setTimeInMonths(Number(e.target.value));
-            }}
+            onBlur={onTimeInMonthsChange}
             defaultValue={timeInMonths}
           />
           <label className="block">Interest paid</label>
