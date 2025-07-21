@@ -7,6 +7,8 @@ export enum CompoundFrequency {
   Annually = 1,
 }
 
+// Formula: P(1 + rt)
+// Where: P = principal, r = interest rate, t = time in years
 export function interestAtMaturity(
   principal: number,
   annualInterest: number,
@@ -16,12 +18,13 @@ export function interestAtMaturity(
     throw new InvalidTime("Time period for interest calculation must be >= 0");
   }
 
-  // Formula: P(1 + rt)
   const years = timeInMonths / 12;
   const finalBalance = principal * (1 + (annualInterest / 100) * years);
   return Math.round(finalBalance);
 }
 
+// Formula: P(1+ r/n)^tn
+// Where: P = principal, r = interest rate, t = time in years, n = compounding frequency
 export function calculateCompoundInterest(
   principal: number,
   annualInterest: number,
@@ -36,7 +39,6 @@ export function calculateCompoundInterest(
     throw new InvalidCompoundFrequency("Compound frequency must be >= 0");
   }
 
-  // Equation: P(1+ r/n)^tn
   const years = timeInMonths / 12;
   const finalBalance =
     principal *
