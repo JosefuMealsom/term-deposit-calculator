@@ -37,3 +37,5 @@ This will output into the `./dist` folder, where you can then serve on your favo
 
 - Calculate the final balance on pressing enter within a field, not just on blur
 - Add CI for running tests on push to Github (eg via Github actions, Circle CI)
+- Return just the interest from the interest calculations; not the principal with the interest added.
+The value returned conflicts with the name of the function.
